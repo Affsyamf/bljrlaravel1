@@ -1,1 +1,3 @@
-<a href="{{ $attributes->get('href') }}"> {{ $slot }} </a>
+@props(['active' => false])
+
+<a {{ $attributes }} > {{ $slot }} {{ $active }} </a>
