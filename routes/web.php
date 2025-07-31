@@ -17,6 +17,7 @@ Route::get('/siswa', function () {
         ['id' => 1, 'nama' => 'afif', 'nim' => '6702223011'],
         ['id' => 2, 'nama' => 'misel', 'nim' => '6702223012'],
         ['id' => 3, 'nama' => 'gerald', 'nim' => '6702223013'],
+        ['id' => 4, 'nama' => 'hazel', 'nim' => '6702223014'],
     ];
     return view ('siswa.siswa', ['data' => $data]);
 });
