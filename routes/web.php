@@ -8,12 +8,17 @@ Route::get('/', function () {
 Route::get('/about', function () {
     $nama = 'afif syam ';
     $umur = 20;
-    // return view ('about', ['data' => $nama, 'umur' => 20]);
-    return view('about', compact('nama', 'umur'));
+     return view ('about', ['data' => $nama, 'umur' => 20]);
+    // return view('about', compact('nama', 'umur'));
+   //  return view('about') -> with ('nama', 'afif syam fauzi') -> with ('umur', 20);
 });
 Route::get('/siswa', function () {
     return view ('siswa.siswa');
 });
 Route::get('/contact', function () {
     return view ('contact.kontak');
+});
+Route::get('/siswa/{id}', function ($id) {
+    // dd($id);
+    return view ('siswa.show', ['id' => $id ]);
 });
