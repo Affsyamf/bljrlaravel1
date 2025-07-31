@@ -13,7 +13,12 @@ Route::get('/about', function () {
    //  return view('about') -> with ('nama', 'afif syam fauzi') -> with ('umur', 20);
 });
 Route::get('/siswa', function () {
-    return view ('siswa.siswa');
+    $data = [
+        ['id' => 1, 'nama' => 'afif', 'nim' => '6702223011'],
+        ['id' => 2, 'nama' => 'misel', 'nim' => '6702223012'],
+        ['id' => 3, 'nama' => 'gerald', 'nim' => '6702223013'],
+    ];
+    return view ('siswa.siswa', ['data' => $data]);
 });
 Route::get('/contact', function () {
     return view ('contact.kontak');

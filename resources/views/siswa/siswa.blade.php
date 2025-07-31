@@ -7,6 +7,17 @@
     <title>Siswa Page</title>
 </head>
 <body>
-    <h1>hello sisw</h1>
+    <h1>daftar siswa</h1>
+    <ul>
+        @foreach ($data as $item )
+            <li>
+                 {{$item['nama']}} :
+                 {{ $item['nim'] }}
+            </li>
+        @endforeach
+        {{-- <li> {{ $data[0]['nama'] }} </li>
+        <li> {{ $data[1]['nama'] }} </li>
+        <li> {{ $data[2]['nama'] }} </li> --}}
+    </ul>
 </body>
 </html>
