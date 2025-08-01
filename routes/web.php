@@ -15,6 +15,6 @@ Route::post('/siswa',  [SiswaContoller::class, 'store'])->name('siswa.store');
 
 Route::get('/siswa/create', [SiswaContoller::class, 'create'])->name('siswa.create');
 
-Route::get('/siswa/{id}', [SiswaContoller::class, 'show'])->name('siswa.show');
-Route::delete('/siswa/{id}', [SiswaContoller::class, 'destroy'])->name('siswa.destroy');
+Route::get('/siswa/{siswa}', [SiswaContoller::class, 'show'])->name('siswa.show');
+Route::delete('/siswa/{siswa}', [SiswaContoller::class, 'destroy'])->name('siswa.destroy');
 
