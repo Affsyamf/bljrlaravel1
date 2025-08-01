@@ -20,7 +20,7 @@
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['tanggal_lahir'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['jurusan'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> 
-              <a href="/siswa/{{ $item['id'] }}">
+              <a href="/siswa/{{ $item['id'] }}" class="text-teal-500 font-bold hover:opacity-50">
               view details
               </a> 
             </td>
