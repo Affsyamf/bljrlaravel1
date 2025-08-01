@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Mentor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class SiswaFactory extends Factory
                 'Teknik Informatika',
                 'Sistem Informasi'
             ]),
+            'mentor_id' => Mentor::inRandomOrder()->first()->id
         ];
     }
 }

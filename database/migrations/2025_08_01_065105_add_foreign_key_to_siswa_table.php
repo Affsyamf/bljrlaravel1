@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('siswa', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->integer('nim');
-            $table->date('tanggal_lahir');
-            $table->string('jurusan');
-            $table->foreignId('mentor_id');
-            $table->timestamps();
+        Schema::table('siswa', function (Blueprint $table) {
+            //
+            $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
         });
     }
 
@@ -27,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('siswa');
+        Schema::table('siswa', function (Blueprint $table) {
+            //
+        });
     }
 };
