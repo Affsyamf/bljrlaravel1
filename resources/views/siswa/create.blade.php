@@ -7,7 +7,7 @@
 
         {{-- Form Container --}}
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <form method="POST" action="#">
+            <form method="POST" action=" {{ route('siswa.store') }} ">
                 {{-- 
                     @csrf adalah directive Blade untuk keamanan. 
                     Meskipun backend belum ada, ini adalah praktik yang baik untuk selalu menyertakannya.
@@ -18,8 +18,12 @@
                 <div class="mb-5">
                     <label for="nim" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
                     <input type="text" name="nim" id="nim"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                           placeholder="Contoh: 6702223001" required>
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                           placeholder="Contoh: 6702223001" required value="{{ old('nim') }}">
+
+                    @error('nim')
+                        <div class="text-red-500 text-sm"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <!-- Input untuk Nama -->
@@ -27,7 +31,10 @@
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
                     <input type="text" name="nama" id="nama"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                           placeholder="Masukkan nama lengkap" required>
+                           placeholder="Masukkan nama lengkap" required value="{{ old('nama') }}">
+                           @error('nama')
+                        <div class="text-red-500 text-sm"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <!-- Input untuk Tanggal Lahir -->
@@ -35,29 +42,36 @@
                     <label for="tanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Lahir</label>
                     <input type="date" name="tanggal_lahir" id="tanggal_lahir"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                           required>
-                </div>
+                           required value="{{ old('tanggal_lahir') }}">
+                    @error('tanggal_lahir')
+                        <div class="text-red-500 text-sm"> {{ $message }} </div>
+                    @enderror
+                        </div>
 
                 <!-- Input untuk Jurusan -->
                 <div class="mb-5">
                     <label for="jurusan" class="block mb-2 text-sm font-medium text-gray-900">Jurusan</label>
                     <input type="text" name="jurusan" id="jurusan"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                           placeholder="Contoh: Teknik Informatika" required>
-                </div>
+                           placeholder="Contoh: Teknik Informatika" required value="{{ old('jurusan') }}">
+                    @error('jurusan')
+                        <div class="text-red-500 text-sm"> {{ $message }} </div>
+                    @enderror
+                        </div>
 
                 <!-- Dropdown untuk Mentor -->
                 <div class="mb-5">
                     <label for="mentor_id" class="block mb-2 text-sm font-medium text-gray-900">Pilih Mentor</label>
                     <select name="mentor_id" id="mentor_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 value="{{ old('mentor_id') }}"">
                         <option selected disabled>-- Pilih seorang mentor --</option>
-                        <option value="1">Budi Santoso</option>
-                        <option value="2">Citra Lestari</option>
-                        <option value="3">Dewi Anggraini</option>
-                        <option value="4">Eko Prasetyo</option>
-                        <option value="5">Fitriani Rahayu</option>
+                        @foreach ( $mentors as $mentor )
+                            <option value=" {{ $mentor->id }} "> {{ $mentor->nama }} </option>
+                        @endforeach
                     </select>
+                    @error('mentor_id')
+                        <div class="text-red-500 text-sm"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <!-- Tombol Simpan -->
@@ -67,6 +81,17 @@
                         Simpan Data
                     </button>
                 </div>
+
+                {{-- @if (errors->any())
+                    <div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-red-500 text-sm"> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
+
             </form>
         </div>
     </div>

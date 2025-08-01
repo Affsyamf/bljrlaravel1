@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mentor;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 
@@ -23,7 +24,8 @@ class SiswaContoller extends Controller
     public function create()
     {
         //
-        return view('siswa.create');
+        $mentors = Mentor::all();
+        return view('siswa.create', ['mentors' => $mentors]);
     }
 
     /**
@@ -32,6 +34,23 @@ class SiswaContoller extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'nama' => 'required|string|min:3',
+            'nim' => 'required|integer|max:20|unique:siswa,nim',
+            'tanggal_lahir' => 'required|date',
+            'jurusan' => 'required|string|max:100',
+            'mentor_id' => 'nullable|exists:mentors,id',
+        ]);
+
+        Siswa::create([
+            'nama' => $validated ['nam'],
+            'nim' => $validated ['nim'],           
+            'tanggal_lahir' => $validated ['tanggal_lahir'],
+            'jurusan' => $validated ['jurusan'],
+            'mentor_id' => $validated ['mentor_id'],
+        ]);
+
+        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
     /**

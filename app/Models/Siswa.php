@@ -10,7 +10,7 @@ class Siswa extends Model
     use HasFactory;
     //
     protected $table = 'siswa';
-    protected $fillable = ['nama', 'nim', 'tanggal_lahir', 'jurusan'];
+    protected $fillable = ['nama', 'nim', 'tanggal_lahir', 'jurusan', 'mentor_id'];
 
     public function mentor() {
         return $this->belongsTo(mentor::class);
