@@ -8,6 +8,7 @@
         <th class="px-3 py-2 whitespace-nowrap">Nim</th>
         <th class="px-3 py-2 whitespace-nowrap">Tanggal Lahir</th>
         <th class="px-3 py-2 whitespace-nowrap">Jurusan</th>
+        <th class="px-3 py-2 whitespace-nowrap">Detail</th>
       </tr>
     </thead>
 
@@ -18,6 +19,11 @@
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['nim'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['tanggal_lahir'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['jurusan'] }} </td>
+            <td class="px-3 py-2 whitespace-nowrap"> 
+              <a href="/siswa/{{ $item['id'] }}">
+              view details
+              </a> 
+            </td>
         </tr>
         @endforeach
 
