@@ -43,7 +43,7 @@ class SiswaContoller extends Controller
         ]);
 
         Siswa::create([
-            'nama' => $validated ['nam'],
+            'nama' => $validated ['nama'],
             'nim' => $validated ['nim'],           
             'tanggal_lahir' => $validated ['tanggal_lahir'],
             'jurusan' => $validated ['jurusan'],

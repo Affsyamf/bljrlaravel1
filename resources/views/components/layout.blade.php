@@ -12,6 +12,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="flex flex-col min-h-screen">
+  @if (session('success'))
+    <div id='flash' class="bg-green-500 text-white p-4 rounded-lg fixed top-4 right-4 z-50">
+        {{ session('success') }}
+    </div>
+    
+  @endif
 
     {{-- HEADER dengan state Alpine.js --}}
     <header x-data="{ mobileMenuOpen: false }" class="bg-white shadow-sm">
