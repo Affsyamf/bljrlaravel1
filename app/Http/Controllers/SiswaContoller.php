@@ -13,7 +13,7 @@ class SiswaContoller extends Controller
     public function index()
     {
         //
-        $data = Siswa::orderBy('id', 'asc')->get();
+        $data = Siswa::orderBy('id', 'asc')->paginate(10);
         return view ('siswa.siswa', ['data' => $data]);
     }
 
