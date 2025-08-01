@@ -13,7 +13,7 @@ class SiswaContoller extends Controller
     public function index()
     {
         //
-        $data = Siswa::orderBy('id', 'asc')->paginate(10);
+        $data = Siswa::with('mentor')->orderBy('id', 'asc')->paginate(10);
         return view ('siswa.siswa', ['data' => $data]);
     }
 
@@ -23,6 +23,7 @@ class SiswaContoller extends Controller
     public function create()
     {
         //
+        return view('siswa.create');
     }
 
     /**
@@ -39,7 +40,7 @@ class SiswaContoller extends Controller
     public function show(string $id)
     {
         //
-        $siswa = Siswa::findOrFail($id); 
+        $siswa = Siswa::with('mentor')->findOrFail($id); 
         return view ('siswa.show', ['siswa' => $siswa ]);
     }
 
