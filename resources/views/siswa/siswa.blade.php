@@ -20,7 +20,7 @@
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['tanggal_lahir'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> {{ $item['jurusan'] }} </td>
             <td class="px-3 py-2 whitespace-nowrap"> 
-              <a href="/siswa/{{ $item['id'] }}" class="text-teal-500 font-bold hover:opacity-50">
+              <a href="{{ route('siswa.show', $item->id) }}" class="text-teal-500 font-bold hover:opacity-50">
               view details
               </a> 
             </td>
@@ -36,7 +36,7 @@
     <ul>
 
       <div class="py-5">
-        {{ $data->appends(request()->query()) links() }}
+        {{ $data->appends(request()->query())->links() }}
       </div>
         
     <x-slot:footer>
