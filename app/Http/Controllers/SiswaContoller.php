@@ -85,5 +85,9 @@ class SiswaContoller extends Controller
     public function destroy(string $id)
     {
         //
+        $siswa = Siswa::findOrFail($id);
+        $siswa->delete();
+
+        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus.');
     }
 }

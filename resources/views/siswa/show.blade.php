@@ -41,6 +41,14 @@
 
   </dl>
 </div>
+
+<form action="{{ route('siswa.destroy', $siswa->id) }}" method="post">
+  @csrf
+  @method('DELETE')
+  <button type="submit" class="my-8 px-4 py-2 text-white rounded cursor-pointer bg-teal-600">
+    Delete Siswa
+  </button>
+</form>
     <x-slot:footer>
        <strong>Siswa Page</strong>
     </x-slot:footer>
